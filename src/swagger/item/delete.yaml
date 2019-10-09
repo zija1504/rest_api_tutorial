@@ -1,0 +1,16 @@
+Delete the item
+---
+tags:
+  - item
+security:
+  - Bearer: []
+parameters:
+  - name: name
+    in: path
+    type: string
+    description: name of the item
+responses:
+  200:
+    description: Item successfuly deleted
+  404:
+    description: Item not in the list

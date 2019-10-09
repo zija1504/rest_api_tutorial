@@ -1,0 +1,27 @@
+Update item/create and return item
+---
+tags:
+  - item
+security:
+  - Bearer: []
+parameters:
+  - name: name
+    in: path
+    type: string
+    description: name of the item
+  - name: body
+    in: body
+    schema:
+      type: object
+      properties:
+        price:
+          type: number
+          description: price of item
+responses:
+  201:
+    description: The item was succesfully created/updated
+    schema:
+    example:
+      item:
+      name: box
+      price: 22

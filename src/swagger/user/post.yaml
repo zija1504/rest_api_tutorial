@@ -1,0 +1,24 @@
+Create new User
+---
+tags:
+  - user
+parameters:
+  - name: body
+    in: body
+    schema:
+      type: object
+      properties:
+        username:
+          type: string
+          description: the user name
+        password:
+          type: string
+          format: password
+          description: the user password
+        password_check:
+          type: string
+          description: the user password
+
+responses:
+  201:
+    description: The user was successfuly created
