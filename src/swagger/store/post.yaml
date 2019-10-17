@@ -1,0 +1,14 @@
+Create the store and append to the database
+---
+tags:
+  - store
+security:
+  - Bearer: []
+parameters:
+  - name: name
+    in: path
+    type: string
+    description: name of the store
+responses:
+  201:
+    description: The store was succesfully created

@@ -1,41 +1,26 @@
-import sqlite3
+from model.database import db
 
 
-class User:
-    def __init__(self, _id, username, password, *args, **kwargs):
-        self.id = _id
+class UserModel(db.Model):  # noqa
+
+    __tablename__ = "users"
+
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80))
+    password = db.Column(db.String(80))
+
+    def __init__(self, username: str, password: str, *args, **kwargs):
         self.username = username
         self.password = password
 
     @classmethod
-    def find_by_username(cls, username):
-        connection = sqlite3.connect("src/data.db")
-        cursor = connection.cursor()
-
-        query = "SELECT * FROM users WHERE username=?"
-        result = cursor.execute(query, (username,))
-        row = result.fetchone()
-        if row:
-            user = cls(*row)
-        else:
-            user = None
-            print("error")
-
-        connection.close()
-        return user
+    def find_by_username(cls, username: str):
+        return cls.query.filter_by(username=username).first()
 
     @classmethod
-    def find_by_id(cls, _id):
-        connection = sqlite3.connect("src/data.db")
-        cursor = connection.cursor()
+    def find_by_id(cls, _id: int):
+        return cls.query.filter_by(id=_id).first()
 
-        query = "SELECT * FROM users WHERE id=?"
-        result = cursor.execute(query, (_id,))
-        row = result.fetchone()
-        if row:
-            user = cls(*row)
-        else:
-            user = None
-
-        connection.close()
-        return user
+    def add_user(self: db):
+        db.session.add(self)
+        db.session.commit()

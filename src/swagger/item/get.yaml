@@ -14,6 +14,8 @@ responses:
     description: The item's information were successfully retrieved
     schema:
       example:
-        item:
-          name: Extra
-          price: 30
+        name: Extra
+        price: 30
+        store_id: 2
+  404:
+    description: Item does not exist

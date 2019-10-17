@@ -17,6 +17,10 @@ parameters:
         price:
           type: number
           description: price of item
+        store_id:
+          type: integer
+          description: store id where item belongs
+
 responses:
   201:
     description: The item was succesfully created
@@ -25,3 +29,4 @@ responses:
       item:
       name: box
       price: 22
+      store_id: 3

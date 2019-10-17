@@ -1,3 +1,4 @@
-from .user import User
+from .user import UserModel
+from .store import StoreModel
 
-__all__ = ["User"]
+__all__ = ["UserModel", "StoreModel"]

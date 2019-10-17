@@ -1,0 +1,16 @@
+Delete the store
+---
+tags:
+  - store
+security:
+  - Bearer: []
+parameters:
+  - name: name
+    in: path
+    type: string
+    description: name of the store
+responses:
+  200:
+    description: store successfuly deleted
+  404:
+    description: store not in the list

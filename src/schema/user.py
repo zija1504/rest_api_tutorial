@@ -18,3 +18,10 @@ class UserSchema(Schema):
     def validate_numbers(self, data, **kwargs):
         if data["password_check"] != data["password"]:
             raise ValidationError("retype password, not equal")
+
+
+class UserLoginSchema(Schema):
+    username = fields.Str(required=True)
+    password = fields.Str(
+        required=True, validate=[validate.Length(min=6, max=36)]
+    )

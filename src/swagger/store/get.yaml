@@ -1,0 +1,35 @@
+Return an store key information based on his name
+---
+tags:
+  - store
+security:
+  - Bearer: []
+parameters:
+  - name: name
+    in: path
+    type: string
+    description: name of the store
+responses:
+  200:
+    description: The store's information were successfully retrieved
+    schema:
+      Store:
+        type: object
+        properties:
+          name:
+            type: string
+          items:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                price:
+                  type: number
+                store_id:
+                  type: integer
+  404:
+    description: store does not exist
