@@ -129,3 +129,6 @@ pyrightconfig.json
 
 /.idea
 /.vscode
+
+.env
+.flaskenv
