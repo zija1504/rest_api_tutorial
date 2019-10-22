@@ -30,9 +30,9 @@ def create_app(test_config=None):
     app.config["JWT_AUTH_HEADER_NAME"] = "JWT"
     app.config["JWT_EXPIRATION_DELTA"] = timedelta(seconds=1800)
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(
-        basedir, "data.db"
-    )
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get(
+        "DATABASE_URL"
+    ) or "sqlite:///" + os.path.join(basedir, "data.db")
 
     @app.before_first_request
     def create_tables():
