@@ -1,1 +1,1 @@
-web: gunicorn src.rest:app
+web: gunicorn --chdir  src rest:app
